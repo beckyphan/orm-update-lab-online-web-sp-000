@@ -30,11 +30,11 @@ class Student
   
   def save
     sql = <<-SQL
-      INSERT INTO students (id, name, value) 
-      VALUES (?, ?, ?)
+      INSERT INTO students (name, value) 
+      VALUES (?, ?)
     SQL
     
-    DB[:conn].execute(sql) 
+    DB[:conn].execute(sql, self.name, self.value)
   end 
   
   def self.create 
